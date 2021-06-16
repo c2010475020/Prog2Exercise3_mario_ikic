@@ -24,7 +24,7 @@ public class NewsApi {
      *
      * Example URL: https://newsapi.org/v2/top-headlines?country=us&apiKey=myKey
      */
-    public static final String NEWS_API_URL = "http://newsapi.org/v2/%s?q=%s&apiKey=%s";
+    public static final String NEWS_API_URL = "http://newsapi.org/v2/%s?q=%s&apiKey=30a1fa1918d2482db311a48485b7d446";
 
     private Endpoint endpoint;
     private String q;
@@ -123,22 +123,25 @@ public class NewsApi {
         } catch (MalformedURLException e) {
             // TODO improve ErrorHandling
             e.printStackTrace();
-        }
-        HttpURLConnection con;
-        StringBuilder response = new StringBuilder();
-        try {
-            con = (HttpURLConnection) obj.openConnection();
-            BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-            String inputLine;
-            while ((inputLine = in.readLine()) != null) {
-                response.append(inputLine);
+            System.out.println("The URL " + url + "is not valid!");
+        } finally {
+            HttpURLConnection con;
+            StringBuilder response = new StringBuilder();
+            try {
+                con = (HttpURLConnection) obj.openConnection();
+                BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+                String inputLine;
+                while ((inputLine = in.readLine()) != null) {
+                    response.append(inputLine);
+                }
+                in.close();
+            } catch (IOException e) {
+                // TODO improve ErrorHandling
+                System.out.println("Error " + e.getMessage());
             }
-            in.close();
-        } catch (IOException e) {
-            // TODO improve ErrorHandling
-            System.out.println("Error "+e.getMessage());
+
+            return response.toString();
         }
-        return response.toString();
     }
 
     protected String buildURL() {
@@ -185,22 +188,22 @@ public class NewsApi {
     }
 
     public NewsResponse getNews() {
-        NewsResponse newsReponse = null;
+        NewsResponse newsResponse = null;
         String jsonResponse = requestData();
         if(jsonResponse != null && !jsonResponse.isEmpty()){
 
             ObjectMapper objectMapper = new ObjectMapper();
             try {
-                newsReponse = objectMapper.readValue(jsonResponse, NewsResponse.class);
-                if(!"ok".equals(newsReponse.getStatus())){
-                    System.out.println("Error: "+newsReponse.getStatus());
+                newsResponse = objectMapper.readValue(jsonResponse, NewsResponse.class);
+                if(!"ok".equals(newsResponse.getStatus())){
+                    System.out.println("Error: " + newsResponse.getStatus());
                 }
             } catch (JsonProcessingException e) {
-                System.out.println("Error: "+e.getMessage());
+                System.out.println("Error: " + e.getMessage());
             }
         }
         //TODO improve Errorhandling
-        return newsReponse;
+        return newsResponse;
     }
 }
 
