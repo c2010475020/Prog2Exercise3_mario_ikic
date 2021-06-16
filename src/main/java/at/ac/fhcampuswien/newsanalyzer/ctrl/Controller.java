@@ -1,6 +1,7 @@
 package at.ac.fhcampuswien.newsanalyzer.ctrl;
 
 import at.ac.fhcampuswien.newsapi.NewsApi;
+import at.ac.fhcampuswien.newsapi.NewsApiException;
 import at.ac.fhcampuswien.newsapi.beans.Article;
 import at.ac.fhcampuswien.newsapi.beans.NewsResponse;
 
@@ -22,7 +23,13 @@ public class Controller {
 
 		//TODO load the news based on the parameters
 
-		newsResponse = newsApi.getNews();
+		try {
+			newsResponse = newsApi.getNews();
+		}
+		catch (NewsApiException e){
+			System.out.println("Somehow we couldn't get the news :(");
+		}
+
 		if(newsResponse != null){
 			List<Article> articles = newsResponse.getArticles();
 			articles.stream().forEach(article -> System.out.println(article.toString()));

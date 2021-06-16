@@ -4,6 +4,7 @@ package at.ac.fhcampuswien.newsanalyzer.ui;
 import at.ac.fhcampuswien.newsanalyzer.ctrl.Controller;
 import at.ac.fhcampuswien.newsapi.NewsApi;
 import at.ac.fhcampuswien.newsapi.NewsApiBuilder;
+import at.ac.fhcampuswien.newsapi.NewsApiException;
 import at.ac.fhcampuswien.newsapi.enums.Category;
 import at.ac.fhcampuswien.newsapi.enums.Country;
 import at.ac.fhcampuswien.newsapi.enums.Endpoint;
@@ -18,7 +19,7 @@ public class UserInterface
 	private Controller ctrl = new Controller();
 	public static final String APIKEY = "30a1fa1918d2482db311a48485b7d446";
 
-	public void getDataFromCtrl1(){
+	public void getDataFromCtrl1() {
 		System.out.println("Euro 2020 news");
 
 		NewsApi newsApi = new NewsApiBuilder()
@@ -32,7 +33,7 @@ public class UserInterface
 		ctrl.process(newsApi);
 	}
 
-	public void getDataFromCtrl2(){
+	public void getDataFromCtrl2() {
 		// TODO implement me
 		System.out.println("USA top science news");
 
