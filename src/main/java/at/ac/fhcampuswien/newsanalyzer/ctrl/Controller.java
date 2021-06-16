@@ -9,7 +9,7 @@ import java.util.*;
 
 public class Controller {
 
-	public static final String APIKEY = "30a1fa1918d2482db311a48485b7d446";  //TODO add your api key
+	public static final String APIKEY = "d3d2aea7c1df4a6fb99c2d060372d54b";  //TODO add your api key
 	NewsResponse newsResponse = new NewsResponse();
 
         int numberOfArticles = 0;

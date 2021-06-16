@@ -17,7 +17,7 @@ import java.io.InputStreamReader;
 public class UserInterface 
 {
 	private Controller ctrl = new Controller();
-	public static final String APIKEY = "30a1fa1918d2482db311a48485b7d446";
+	public static final String APIKEY = "d3d2aea7c1df4a6fb99c2d060372d54b";
 
 	public void getDataFromCtrl1() {
 		System.out.println("Euro 2020 news");
@@ -35,11 +35,11 @@ public class UserInterface
 
 	public void getDataFromCtrl2() {
 		// TODO implement me
-		System.out.println("USA top science news");
+		System.out.println("NBA News");
 
 		NewsApi newsApi = new NewsApiBuilder()
 				.setApiKey(APIKEY)
-				.setQ("science")
+				.setQ("NBA ")
 				.setEndPoint(Endpoint.TOP_HEADLINES)
 				.setSourceCountry(Country.us)
 				.setSourceCategory(Category.science)
@@ -50,14 +50,14 @@ public class UserInterface
 
 	public void getDataFromCtrl3(){
 		// TODO implement me
-		System.out.println("Britische entertainment headlines");
+		System.out.println("Corona News");
 
 		NewsApi newsApi = new NewsApiBuilder()
 				.setApiKey(APIKEY)
-				.setQ("entertainment")
+				.setQ("corona")
 				.setEndPoint(Endpoint.TOP_HEADLINES)
 				.setSourceCountry(Country.gb)
-				.setSourceCategory(Category.entertainment)
+				.setSourceCategory(Category.science)
 				.setSortBy(SortBy.RELEVANCY)
 				.createNewsApi();
 
@@ -83,9 +83,9 @@ public class UserInterface
 	public void start() {
 		Menu<Runnable> menu = new Menu<>("User Interface");
 		menu.setTitle("Wählen Sie aus:");
-		menu.insert("a", "Euro 2020 news", this::getDataFromCtrl1);
-		menu.insert("b", "USA top science news", this::getDataFromCtrl2);
-		menu.insert("c", "Britische entertainment headlines", this::getDataFromCtrl3);
+		menu.insert("a", "Euro 2021 NEWS", this::getDataFromCtrl1);
+		menu.insert("b", "NBA NEWS", this::getDataFromCtrl2);
+		menu.insert("c", "Corona", this::getDataFromCtrl3);
 		menu.insert("d", "Choice User Input:",this::getDataForCustomInput);
 		menu.insert("q", "Quit", null);
 		Runnable choice;

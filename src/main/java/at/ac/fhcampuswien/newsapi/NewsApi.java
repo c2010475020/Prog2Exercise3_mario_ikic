@@ -24,7 +24,7 @@ public class NewsApi {
      *
      * Example URL: https://newsapi.org/v2/top-headlines?country=us&apiKey=myKey
      */
-    public static final String NEWS_API_URL = "http://newsapi.org/v2/%s?q=%s&apiKey=30a1fa1918d2482db311a48485b7d446";
+    public static final String NEWS_API_URL = "http://newsapi.org/v2/%s?q=%s&apiKey=d3d2aea7c1df4a6fb99c2d060372d54b";
 
     private Endpoint endpoint;
     private String q;
